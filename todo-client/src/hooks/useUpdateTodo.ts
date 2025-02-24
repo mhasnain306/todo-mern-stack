@@ -1,5 +1,6 @@
 import { TodoType } from "@/App"
 import { useState } from "react"
+import { BASE_URL } from "../../constants"
 
 const useUpdateTodo = () => {
 
@@ -9,7 +10,7 @@ const useUpdateTodo = () => {
             "content": todo.content,
             "completed": todo.completed
         }
-        const url = "http://localhost:3000/api/todos/" + todo._id;
+        const url = BASE_URL + "/api/todos/" + todo._id;
         const result = await fetch(url, {
             method: "PUT",
             headers: {

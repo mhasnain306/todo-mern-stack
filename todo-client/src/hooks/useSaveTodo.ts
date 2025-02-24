@@ -1,5 +1,6 @@
 import { TodoType } from "@/App";
 import { useState } from "react";
+import { BASE_URL } from "../../constants";
 
 
 const useSaveTodo = () => {
@@ -7,7 +8,7 @@ const useSaveTodo = () => {
     const [error, setError] = useState("");
 
     const saveTodo = async (todo: TodoType, token: string) => {
-        const result = await fetch("http://localhost:3000/api/todos", {
+        const result = await fetch(BASE_URL + "/api/todos", {
             method: "POST",
             headers: {
                 "Content-Type": "application/Json",

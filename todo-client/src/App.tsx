@@ -17,6 +17,7 @@ import useSaveTodo from "./hooks/useSaveTodo";
 import useUpdateTodo from "./hooks/useUpdateTodo";
 import { useNavigate } from "react-router-dom";
 import useDeleteTodo from "./hooks/useDeleteTodo";
+import { BASE_URL } from "../constants";
 
 export interface TodoType {
   _id: string;
@@ -70,16 +71,16 @@ function App() {
       setUserName(jwtDecode<User>(token).name);
       const fetchTodos = async () => {
         try {
-          const response = await fetch(
-            "http://localhost:3000/api/todos",
-            {
-              headers: {
-                "Content-Type": "application/json",
-                "x-auth-token": token,
-              },
-            }
-          );
+          console.log(BASE_URL + "/api/todos");
+          const response = await fetch(BASE_URL + "/api/todos", {
+            headers: {
+              "Content-Type": "application/json",
+              "x-auth-token": token,
+            },
+          });
           const data = await response.json();
+          console.log(data);
+          console.log(token);
           setTodos(data);
         } catch (error) {
           console.error("Error fetching todos:", error);

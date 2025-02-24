@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_URL } from "../../constants";
 
 const useSignup = () => {
     const [isSignedUp, setSignedUp] = useState(false);
@@ -9,7 +10,9 @@ const useSignup = () => {
         const user = JSON.stringify({ name, email, password });
 
         try {
-            const response = await fetch("http://localhost:3000/api/users", {
+            console.log(BASE_URL + "/api/users");
+
+            const response = await fetch(BASE_URL + "/api/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

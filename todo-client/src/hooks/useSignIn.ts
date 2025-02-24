@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_URL } from "../../constants";
 
 const useSignIn = () => {
     const [loading, setLoading] = useState(false);
@@ -10,7 +11,7 @@ const useSignIn = () => {
         setSignInError(null);
 
         try {
-            const response = await fetch("http://localhost:3000/api/auth", {
+            const response = await fetch(BASE_URL + "/api/auth", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
