@@ -54,7 +54,7 @@ module.exports.verifyPassword = async (
 };
 
 module.exports.jwtToken = (input) => {
-  return jwt.sign(input, config.get("jwtPrivateKey"));
+  return jwt.sign(input, process.env.todo_jwtPrivateKey);
 };
 
 module.exports.hashPassword = async (password) => {

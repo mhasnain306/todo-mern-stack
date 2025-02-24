@@ -5,6 +5,7 @@ const auth = require("./routes/auth");
 const app = express();
 const cors = require("cors");
 const db = require("./db");
+const config = require("config");
 
 app.use(
   cors({
